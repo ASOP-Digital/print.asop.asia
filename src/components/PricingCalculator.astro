@@ -373,7 +373,6 @@
 		}
 	}
 </style>
-
 <script>
 	// Pricing calculator logic
 	document.addEventListener('DOMContentLoaded', function() {
@@ -416,28 +415,30 @@
 			let price = 0;
 			const breakdown = [];
 
-			// Paper type pricing (updated with correct pricing)
+			const pages = parseInt(elements.pages.value) || 1;
+
+			// Paper type pricing (updated with bulk discount)
 			const paperType = elements.paperType.value;
 			let paperCost = 0;
-			
+
 			if (paperType === 'a4-70') {
-				paperCost = 30;
-				breakdown.push({ label: 'A4 Paper (70gsm)', cost: 30 });
+				paperCost = pages > 1000 ? 25 : 30;
+				breakdown.push({ label: 'A4 Paper (70gsm)', cost: paperCost });
 			} else if (paperType === 'a4-80') {
-				paperCost = 50;
-				breakdown.push({ label: 'A4 Paper (80gsm)', cost: 50 });
+				paperCost = pages > 1000 ? 45 : 50;
+				breakdown.push({ label: 'A4 Paper (80gsm)', cost: paperCost });
 			} else if (paperType === 'a5-70') {
-				paperCost = 25;
-				breakdown.push({ label: 'A5 Paper (70gsm)', cost: 25 });
+				paperCost = pages > 1000 ? 20 : 25;
+				breakdown.push({ label: 'A5 Paper (70gsm)', cost: paperCost });
 			} else if (paperType === 'a5-80') {
-				paperCost = 45;
-				breakdown.push({ label: 'A5 Paper (80gsm)', cost: 45 });
+				paperCost = pages > 1000 ? 40 : 45;
+				breakdown.push({ label: 'A5 Paper (80gsm)', cost: paperCost });
 			} else if (paperType === 'photo') {
-				paperCost = 1000;
-				breakdown.push({ label: 'Photo Paper', cost: 1000 });
+				paperCost = pages > 1000 ? 900 : 1000;
+				breakdown.push({ label: 'Photo Paper', cost: paperCost });
 			} else if (paperType === 'sticker') {
-				paperCost = 2000;
-				breakdown.push({ label: 'Sticker Paper', cost: 2000 });
+				paperCost = pages > 1000 ? 1800 : 2000;
+				breakdown.push({ label: 'Sticker Paper', cost: paperCost });
 			}
 
 			price += paperCost;
@@ -457,7 +458,7 @@
 			// Quality pricing
 			const quality = elements.quality.value;
 			let qualityCost = 0;
-			
+
 			if (quality === 'low') {
 				qualityCost = 5;
 				breakdown.push({ label: 'Low Quality (50dpi)', cost: 5 });
@@ -471,8 +472,7 @@
 
 			price += qualityCost;
 
-			// Multiply by pages
-			const pages = parseInt(elements.pages.value) || 1;
+			// Total base cost per page before multiplying
 			const baseCostPerPage = price;
 			price *= pages;
 
@@ -506,7 +506,7 @@
 					`;
 				}
 			});
-			
+
 			if (pages > 1) {
 				breakdownHTML += `
 					<div class="breakdown-item">
@@ -516,7 +516,6 @@
 				`;
 			}
 
-			// Add binding cost separately if applicable
 			if (bindingCost > 0) {
 				const bindingLabel = elements.bindingType.value === 'booklet' ? 'Booklet Binding' : 'Perfect Glue Binding';
 				breakdownHTML += `
