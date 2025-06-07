@@ -1,0 +1,321 @@
+---
+// Terms of Service and Privacy Policy page
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout title="Terms of Service & Privacy Policy - ASOP Print" description="Read our terms of service and privacy policy for ASOP Print services.">
+	<Navigation />
+	
+	<main class="privacy-page">
+		<section class="privacy-hero">
+			<div class="container">
+				<h1>Terms of Service & Privacy Policy</h1>
+				<p class="hero-subtitle">Your privacy and satisfaction are our priorities</p>
+			</div>
+		</section>
+
+		<section class="privacy-content">
+			<div class="container">
+				<div class="content-section">
+					<h2>Terms of Service</h2>
+					
+					<div class="terms-grid">
+						<div class="term-card">
+							<h3>1. Service Agreement</h3>
+							<p>By using ASOP Print services, you agree to our terms and conditions. We provide professional printing services including document printing, photo printing, stickers, and binding services with competitive pricing and quality assurance.</p>
+						</div>
+
+						<div class="term-card">
+							<h3>2. Pricing & Payment</h3>
+							<p>All prices are calculated using our transparent pricing system. Final pricing may vary based on specific requirements. Payment is due upon order confirmation. We accept various payment methods as discussed during order placement.</p>
+						</div>
+
+						<div class="term-card">
+							<h3>3. Quality Guarantee</h3>
+							<p>We guarantee the quality of our printing services. If you're not satisfied with the quality of your order, please contact us within 5 hours of delivery for resolution. We stand behind our work and will make it right.</p>
+						</div>
+
+						<div class="term-card">
+							<h3>4. Delivery Terms</h3>
+							<p>Delivery is provided through Royal Express services. Delivery times and costs may vary based on location and package size. We are not responsible for delays caused by third-party delivery services beyond our control.</p>
+						</div>
+
+						<div class="term-card">
+							<h3>5. File Requirements</h3>
+							<p>Customers are responsible for providing files in appropriate formats and quality. We recommend high-resolution files for best results. File compatibility and printing requirements will be discussed during order confirmation.</p>
+						</div>
+
+						<div class="term-card">
+							<h3>6. Cancellation Policy</h3>
+							<p>Orders can be cancelled before printing begins. Once printing has started, cancellation may incur charges for materials and work completed. Please contact us as soon as possible if you need to cancel an order.</p>
+						</div>
+						<div class="term-card">
+							<h3>7. Refund Policy</h3>
+							<p>We do not offer refund if it is user error, we will happily offer a refund if it is our mistake. As we are focused on quality, customer satisfaction matter to us, please do note that we do not just offer refunds if customer / user do not like it nor is not happy about it.</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="content-section">
+					<h2>Privacy Policy</h2>
+					
+					<div class="privacy-grid">
+						<div class="privacy-card">
+							<h3>Information We Collect</h3>
+							<p>We collect only necessary information to process your printing orders, including contact details, delivery addresses, and file specifications. We do not collect unnecessary personal data and respect your privacy.</p>
+						</div>
+
+						<div class="privacy-card">
+							<h3>How We Use Your Information</h3>
+							<p>Your information is used solely for:</p>
+							<ul>
+								<li>Processing and fulfilling your printing orders</li>
+								<li>Communicating about your orders and delivery</li>
+								<li>Providing customer support</li>
+								<li>Improving our services based on feedback</li>
+							</ul>
+						</div>
+
+						<div class="privacy-card">
+							<h3>Data Security</h3>
+							<p>We implement appropriate security measures to protect your personal information and uploaded files. Your data is stored securely (AES encrypted) and access is restricted to authorized personnel only. Files are deleted after order completion unless otherwise requested.</p>
+						</div>
+
+						<div class="privacy-card">
+							<h3>File Confidentiality</h3>
+							<p>All files submitted for printing are treated as confidential. We do not share, distribute, or use your files for any purpose other than fulfilling your printing order. Your intellectual property remains yours.</p>
+						</div>
+
+						<div class="privacy-card">
+							<h3>Third-Party Services</h3>
+							<p>We use Royal Express for delivery services. Your delivery information is shared with them solely for delivery purposes. We do not share your information with any other third parties without your consent.</p>
+						</div>
+
+						<div class="privacy-card">
+							<h3>Your Rights</h3>
+							<p>You have the right to:</p>
+							<ul>
+								<li>Request information about data we hold about you</li>
+								<li>Request correction of incorrect information</li>
+								<li>Request deletion of your personal data</li>
+								<li>Withdraw consent for data processing</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="contact-section">
+					<h2>Questions or Concerns?</h2>
+					<p>If you have any questions about our Terms of Service or Privacy Policy, or if you need to exercise your privacy rights, please don't hesitate to contact us.</p>
+					<div class="contact-buttons">
+						<a href="https://asop.asia/#contact" class="btn btn-primary" target="_blank">Contact Us</a>
+						<a href="https://asop.asia/" class="btn btn-secondary" target="_blank">Visit Main Site</a>
+					</div>
+					<p class="last-updated">Last updated: June 7 2025</p>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.privacy-page {
+		padding-top: 80px;
+		min-height: 100vh;
+	}
+
+	.privacy-hero {
+		padding: 4rem 0;
+		text-align: center;
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.privacy-hero h1 {
+		font-size: 3rem;
+		color: white;
+		margin-bottom: 1rem;
+		font-weight: 700;
+	}
+
+	.hero-subtitle {
+		font-size: 1.3rem;
+		color: rgba(255, 255, 255, 0.8);
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.privacy-content {
+		padding: 4rem 0;
+	}
+
+	.content-section {
+		margin-bottom: 5rem;
+	}
+
+	.content-section h2 {
+		font-size: 2.5rem;
+		color: white;
+		margin-bottom: 3rem;
+		text-align: center;
+		font-weight: 700;
+	}
+
+	.terms-grid,
+	.privacy-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.term-card,
+	.privacy-card {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(20px);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 20px;
+		padding: 2rem;
+		transition: all 0.3s ease;
+		animation: fadeInUp 0.6s ease-out;
+	}
+
+	.term-card:hover,
+	.privacy-card:hover {
+		transform: translateY(-5px);
+		background: rgba(255, 255, 255, 0.15);
+		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+	}
+
+	.term-card h3,
+	.privacy-card h3 {
+		font-size: 1.3rem;
+		color: #FFE066;
+		margin-bottom: 1rem;
+		font-weight: 600;
+	}
+
+	.term-card p,
+	.privacy-card p {
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1.7;
+		margin-bottom: 1rem;
+	}
+
+	.privacy-card ul {
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1.7;
+		padding-left: 1.5rem;
+	}
+
+	.privacy-card li {
+		margin-bottom: 0.5rem;
+	}
+
+	.contact-section {
+		text-align: center;
+		padding: 3rem 2rem;
+		background: rgba(255, 255, 255, 0.05);
+		border-radius: 20px;
+	}
+
+	.contact-section h2 {
+		font-size: 2.5rem;
+		color: white;
+		margin-bottom: 1rem;
+		font-weight: 700;
+	}
+
+	.contact-section p {
+		font-size: 1.2rem;
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 2rem;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+		line-height: 1.7;
+	}
+
+	.contact-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-bottom: 2rem;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1rem 2rem;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border: 2px solid transparent;
+	}
+
+	.btn-primary {
+		background: linear-gradient(135deg, #FFE066 0%, #FF6B9D 100%);
+		color: #333;
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: white;
+		border-color: rgba(255, 255, 255, 0.3);
+	}
+
+	.btn-secondary:hover {
+		background: rgba(255, 255, 255, 0.1);
+		transform: translateY(-3px);
+	}
+
+	.last-updated {
+		font-size: 0.9rem;
+		color: rgba(255, 255, 255, 0.6);
+		margin-top: 1rem;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.privacy-hero h1 {
+			font-size: 2.5rem;
+		}
+
+		.content-section h2 {
+			font-size: 2rem;
+		}
+
+		.terms-grid,
+		.privacy-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.contact-buttons {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+</style>

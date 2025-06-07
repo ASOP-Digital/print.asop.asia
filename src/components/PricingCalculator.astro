@@ -1,0 +1,543 @@
+---
+// Interactive pricing calculator component
+---
+
+<section class="pricing-calculator">
+	<div class="calculator-container">
+		<div class="section-header">
+			<h2>Pricing Calculator</h2>
+			<p>Get an instant quote for your printing needs</p>
+		</div>
+
+		<div class="calculator-content">
+			<div class="calculator-form">
+				<div class="form-group">
+					<label for="pages">Number of Pages</label>
+					<input type="number" id="pages" min="1" value="1">
+					<small>2 pages = 1 paper</small>
+				</div>
+
+				<div class="form-group">
+					<div class="checkbox-group">
+						<input type="checkbox" id="color">
+						<label for="color">Color Printing</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="paperType">Paper Type</label>
+					<select id="paperType">
+						<option value="a4-70">A4 (70gsm)</option>
+						<option value="a4-80">A4 (80gsm)</option>
+						<option value="a5-70">A5 (70gsm)</option>
+						<option value="a5-80">A5 (80gsm)</option>
+						<option value="photo">Photo Paper</option>
+						<option value="sticker">Sticker Paper</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="quality">Print Quality</label>
+					<select id="quality">
+						<option value="low">Low (50dpi)</option>
+						<option value="normal" selected>Normal (200dpi)</option>
+						<option value="high">High (300dpi)</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<div class="checkbox-group">
+						<input type="checkbox" id="binding">
+						<label for="binding">Include Binding</label>
+					</div>
+				</div>
+
+				<div class="form-group binding-options" id="bindingOptions" style="display: none;">
+					<label for="bindingType">Binding Type</label>
+					<select id="bindingType">
+						<option value="booklet">Booklet Binding (+8,000 MMK)</option>
+						<option value="perfect">Perfect Glue Binding (+15,000 MMK)</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<div class="checkbox-group">
+						<input type="checkbox" id="delivery">
+						<label for="delivery">Include Delivery</label>
+					</div>
+				</div>
+
+				<div class="delivery-info" id="deliveryInfo" style="display: none;">
+					<p>We use Royal Express services, so prices may vary. 
+					<a href="https://asop.asia/#contact" target="_blank">Contact us</a> for exact delivery pricing.</p>
+				</div>
+			</div>
+
+			<div class="calculator-result">
+				<div class="result-card">
+					<h3>Estimated Price</h3>
+					<div class="price-display">
+						<span class="currency">MMK</span>
+						<span class="amount" id="totalPrice">0</span>
+					</div>
+					<div class="price-breakdown" id="priceBreakdown">
+						<div class="breakdown-item">
+							<span>Base Cost:</span>
+							<span id="baseCost">0 MMK</span>
+						</div>
+					</div>
+					<button class="btn btn-primary" onclick="window.open('https://asop.asia/#contact', '_blank')">
+						Get Quote
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.pricing-calculator {
+		padding: 6rem 0;
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	.calculator-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.section-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.section-header h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		color: white;
+		margin-bottom: 1rem;
+	}
+
+	.section-header p {
+		font-size: 1.2rem;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.calculator-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: start;
+	}
+
+	.calculator-form {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(20px);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 20px;
+		padding: 2rem;
+	}
+
+	.form-group {
+		margin-bottom: 1.5rem;
+	}
+
+	label {
+		display: block;
+		color: white;
+		margin-bottom: 0.5rem;
+		font-weight: 500;
+	}
+
+	input[type="number"], select {
+		width: 100%;
+		padding: 0.8rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.1);
+		color: white;
+		font-size: 1rem;
+	}
+
+	input[type="number"]:focus, select:focus {
+		outline: none;
+		border-color: #FFE066;
+		box-shadow: 0 0 0 3px rgba(255, 224, 102, 0.2);
+	}
+
+	select option {
+		background: #333;
+		color: white;
+	}
+
+	.checkbox-group {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	input[type="checkbox"] {
+		width: 20px;
+		height: 20px;
+		accent-color: #FFE066;
+	}
+
+	small {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.9rem;
+		margin-top: 0.3rem;
+		display: block;
+	}
+
+	.binding-options, .delivery-info {
+		padding: 1rem;
+		background: rgba(255, 224, 102, 0.1);
+		border-radius: 10px;
+		border: 1px solid rgba(255, 224, 102, 0.3);
+	}
+
+	.delivery-info p {
+		color: white;
+		margin: 0;
+	}
+
+	.delivery-info a {
+		color: #FFE066;
+		text-decoration: none;
+	}
+
+	.delivery-info a:hover {
+		text-decoration: underline;
+	}
+
+	.calculator-result {
+		position: sticky;
+		top: 2rem;
+	}
+
+	.result-card {
+		background: rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(20px);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 20px;
+		padding: 2rem;
+		text-align: center;
+	}
+
+	.result-card h3 {
+		color: white;
+		font-size: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.price-display {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.currency {
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 1.2rem;
+	}
+
+	.amount {
+		color: #FFE066;
+		font-size: 3rem;
+		font-weight: 700;
+	}
+
+	.price-breakdown {
+		text-align: left;
+		margin-bottom: 2rem;
+		padding: 1.5rem;
+		background: rgba(255, 255, 255, 0.05);
+		border-radius: 10px;
+	}
+
+	.breakdown-item {
+		display: flex;
+		justify-content: space-between;
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 0.5rem;
+	}
+
+	.breakdown-item:last-child {
+		margin-bottom: 0;
+		padding-top: 0.5rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		font-weight: 600;
+		color: white;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1rem 2rem;
+		border-radius: 50px;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		border: none;
+		cursor: pointer;
+		font-size: 1rem;
+		width: 100%;
+		justify-content: center;
+	}
+
+	.btn-primary {
+		background: linear-gradient(135deg, #FFE066 0%, #FF6B9D 100%);
+		color: #333;
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+	}
+
+	/* Mobile Optimization */
+	@media (max-width: 768px) {
+		.pricing-calculator {
+			padding: 4rem 0;
+		}
+
+		.calculator-container {
+			padding: 0 1rem;
+		}
+
+		.section-header h2 {
+			font-size: 2rem;
+		}
+
+		.calculator-content {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.calculator-form {
+			padding: 1.5rem;
+		}
+
+		.calculator-result {
+			position: static;
+		}
+
+		.result-card {
+			padding: 1.5rem;
+		}
+
+		.amount {
+			font-size: 2.5rem;
+		}
+
+		.price-breakdown {
+			padding: 1rem;
+		}
+
+		.breakdown-item {
+			font-size: 0.9rem;
+		}
+
+		.btn {
+			padding: 0.8rem 1.5rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.calculator-container {
+			padding: 0 0.5rem;
+		}
+
+		.calculator-form {
+			padding: 1rem;
+		}
+
+		.result-card {
+			padding: 1rem;
+		}
+
+		.amount {
+			font-size: 2rem;
+		}
+
+		.section-header h2 {
+			font-size: 1.8rem;
+		}
+
+		.section-header p {
+			font-size: 1rem;
+		}
+	}
+</style>
+
+<script>
+	// Pricing calculator logic
+	document.addEventListener('DOMContentLoaded', function() {
+		const elements = {
+			pages: document.getElementById('pages'),
+			color: document.getElementById('color'),
+			paperType: document.getElementById('paperType'),
+			quality: document.getElementById('quality'),
+			binding: document.getElementById('binding'),
+			bindingType: document.getElementById('bindingType'),
+			delivery: document.getElementById('delivery'),
+			bindingOptions: document.getElementById('bindingOptions'),
+			deliveryInfo: document.getElementById('deliveryInfo'),
+			totalPrice: document.getElementById('totalPrice'),
+			priceBreakdown: document.getElementById('priceBreakdown'),
+			baseCost: document.getElementById('baseCost')
+		};
+
+		// Show/hide binding options
+		elements.binding.addEventListener('change', function() {
+			elements.bindingOptions.style.display = this.checked ? 'block' : 'none';
+			calculatePrice();
+		});
+
+		// Show/hide delivery info
+		elements.delivery.addEventListener('change', function() {
+			elements.deliveryInfo.style.display = this.checked ? 'block' : 'none';
+			calculatePrice();
+		});
+
+		// Add event listeners for price calculation
+		Object.values(elements).forEach(element => {
+			if (element && element.addEventListener) {
+				element.addEventListener('change', calculatePrice);
+				element.addEventListener('input', calculatePrice);
+			}
+		});
+
+		function calculatePrice() {
+			let price = 0;
+			const breakdown = [];
+
+			// Paper type pricing (updated with correct pricing)
+			const paperType = elements.paperType.value;
+			let paperCost = 0;
+			
+			if (paperType === 'a4-70') {
+				paperCost = 30;
+				breakdown.push({ label: 'A4 Paper (70gsm)', cost: 30 });
+			} else if (paperType === 'a4-80') {
+				paperCost = 50;
+				breakdown.push({ label: 'A4 Paper (80gsm)', cost: 50 });
+			} else if (paperType === 'a5-70') {
+				paperCost = 25;
+				breakdown.push({ label: 'A5 Paper (70gsm)', cost: 25 });
+			} else if (paperType === 'a5-80') {
+				paperCost = 45;
+				breakdown.push({ label: 'A5 Paper (80gsm)', cost: 45 });
+			} else if (paperType === 'photo') {
+				paperCost = 1000;
+				breakdown.push({ label: 'Photo Paper', cost: 1000 });
+			} else if (paperType === 'sticker') {
+				paperCost = 2000;
+				breakdown.push({ label: 'Sticker Paper', cost: 2000 });
+			}
+
+			price += paperCost;
+
+			// Color pricing
+			let colorCost = 0;
+			if (elements.color.checked) {
+				colorCost = 50;
+				breakdown.push({ label: 'Color Printing', cost: 50 });
+			} else {
+				colorCost = 15;
+				breakdown.push({ label: 'B&W Printing', cost: 15 });
+			}
+
+			price += colorCost;
+
+			// Quality pricing
+			const quality = elements.quality.value;
+			let qualityCost = 0;
+			
+			if (quality === 'low') {
+				qualityCost = 5;
+				breakdown.push({ label: 'Low Quality (50dpi)', cost: 5 });
+			} else if (quality === 'normal') {
+				qualityCost = 10;
+				breakdown.push({ label: 'Normal Quality (200dpi)', cost: 10 });
+			} else if (quality === 'high') {
+				qualityCost = 15;
+				breakdown.push({ label: 'High Quality (300dpi)', cost: 15 });
+			}
+
+			price += qualityCost;
+
+			// Multiply by pages
+			const pages = parseInt(elements.pages.value) || 1;
+			const baseCostPerPage = price;
+			price *= pages;
+
+			// Binding pricing
+			let bindingCost = 0;
+			if (elements.binding.checked) {
+				const bindingType = elements.bindingType.value;
+				if (bindingType === 'booklet') {
+					bindingCost = 8000;
+					breakdown.push({ label: 'Booklet Binding', cost: 8000 });
+				} else if (bindingType === 'perfect') {
+					bindingCost = 15000;
+					breakdown.push({ label: 'Perfect Glue Binding', cost: 15000 });
+				}
+				price += bindingCost;
+			}
+
+			// Update display
+			elements.totalPrice.textContent = price.toLocaleString();
+			elements.baseCost.textContent = `${baseCostPerPage} MMK × ${pages} pages = ${(baseCostPerPage * pages).toLocaleString()} MMK`;
+
+			// Update breakdown
+			let breakdownHTML = '';
+			breakdown.forEach(item => {
+				if (item.label !== 'Booklet Binding' && item.label !== 'Perfect Glue Binding') {
+					breakdownHTML += `
+						<div class="breakdown-item">
+							<span>${item.label}:</span>
+							<span>${item.cost.toLocaleString()} MMK</span>
+						</div>
+					`;
+				}
+			});
+			
+			if (pages > 1) {
+				breakdownHTML += `
+					<div class="breakdown-item">
+						<span>Pages (×${pages}):</span>
+						<span>${(baseCostPerPage * pages).toLocaleString()} MMK</span>
+					</div>
+				`;
+			}
+
+			// Add binding cost separately if applicable
+			if (bindingCost > 0) {
+				const bindingLabel = elements.bindingType.value === 'booklet' ? 'Booklet Binding' : 'Perfect Glue Binding';
+				breakdownHTML += `
+					<div class="breakdown-item">
+						<span>${bindingLabel}:</span>
+						<span>${bindingCost.toLocaleString()} MMK</span>
+					</div>
+				`;
+			}
+
+			breakdownHTML += `
+				<div class="breakdown-item">
+					<span><strong>Total:</strong></span>
+					<span><strong>${price.toLocaleString()} MMK</strong></span>
+				</div>
+			`;
+
+			elements.priceBreakdown.innerHTML = breakdownHTML;
+		}
+
+		// Initial calculation
+		calculatePrice();
+	});
+</script>

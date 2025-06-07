@@ -1,0 +1,65 @@
+---
+// Layout component for consistent page structure
+export interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Professional printing services with competitive pricing and quality binding options." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="https://kzc1bdi3d5.ufs.sh/f/5wUqw9XG2YXTDXlzIcdJo1eN2iOlnbgUuc64tjfT8hIqSPXM" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		font-family: 'Inter', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		min-height: 100vh;
+		background: linear-gradient(135deg, #6B73FF 0%, #9434FF 100%);
+		color: #333;
+		line-height: 1.6;
+	}
+
+	/* Custom scrollbar */
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.3);
+		border-radius: 4px;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: rgba(255, 255, 255, 0.5);
+	}
+</style>
